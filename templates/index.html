@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body class="{{weather.main if weather}}">
+    <div>
+        <h1>Weather App</h1>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter City Name:">
+            <button type="submit">Check</button>
+        </form>
+        {% if weather %}
+            {%if weather !="city not found" %}
+                <h3>City:{{weather.city}}</h3>
+                <p>Temperature:{{weather.temp}} °C</p>
+                <p>Humidity:{{weather.humidity}}%</p>
+                <p>Weather:{{weather.Desc}}</p>
+                <!-- <p>Aqi:{{weather.aqi}}</p> -->
+            {% else %}
+                <p>{{weather}}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+</body>
+</html>
